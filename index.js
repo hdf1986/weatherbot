@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000
 const User = require('./models/user');
 const sendMessage = require('./utils/telegram');
 const locationRequest = 'Me decis mi ubicacion?';
-const locationRequest = 'Me decis el clima?';
+const weatherRequest = 'Me decis el clima?';
 
 [User].map(model => model.sync({ force: false }));
 
