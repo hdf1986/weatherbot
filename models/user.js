@@ -10,7 +10,7 @@ User.init({
   currentQuestion: DataTypes.STRING
 }, { sequelize, modelName: 'user' });
 
-User.fromTelegramRequest = (body) => {
+User.fromTelegramRequest = async (body) => {
   const telegramId = body.message.from.id.toString()
   const conversationId = body.message.chat.id
   return User.findOrCreate({

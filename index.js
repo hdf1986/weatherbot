@@ -11,9 +11,9 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.post('/webhooks/telegram', (req, res) => {
+app.post('/webhooks/telegram', async (req, res) => {
   console.log(req.body)
-  const user = User.fromTelegramRequest(req.body)
+  const user = await User.fromTelegramRequest(req.body)
   console.log(user)
   
   res.send({ status: "ok" })
