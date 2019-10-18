@@ -13,6 +13,8 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/webhooks/telegram', (req, res) => {
   console.log(req.body)
+  const user = User.fromTelegramRequest(req.body)
+  console.log(user)
   
   res.send({ status: "ok" })
 })

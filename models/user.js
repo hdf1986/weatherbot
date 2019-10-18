@@ -10,4 +10,16 @@ User.init({
   currentQuestion: DataTypes.STRING
 }, { sequelize, modelName: 'user' });
 
+User.fromTelegramRequest = (body) => {
+  const telegramId = body.message.from.id.toString()
+  const conversationId = body.message.chat.id
+  return User.findOrCreate({
+    where: { telegramId },
+    defaults: { 
+      conversationId,
+      currentQuestion: null
+    }
+  })
+}
+
 module.export = User;
