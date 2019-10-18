@@ -13,7 +13,7 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/webhooks/telegram', async (req, res) => {
   console.log(req.body)
-  const user = await User.createFromRequest(req.body)
+  const user = (await User.createFromRequest(req.body))[0]
   console.log(user.conversationId)
   sendMessage({
     conversationId: user.conversationId,
