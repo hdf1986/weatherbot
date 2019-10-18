@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000
 const User = require('./models/user');
 const sendMessage = require('./utils/telegram');
 const locationRequest = 'Me decis mi ubicacion?';
+const locationRequest = 'Me decis el clima?';
 
 [User].map(model => model.sync({ force: false }));
 
@@ -30,6 +31,11 @@ app.post('/webhooks/telegram', async (req, res) => {
     sendMessage({
       conversationId: user.conversationId,
       text: `Tu ubicacion es ${user.latLon}`
+    })
+  } else if (levenshtein(weatherRequest, req.body.message.text) <= 5) {
+    sendMessage({
+      conversationId: user.conversationId,
+      text: `El clima es soleado!`
     })
   } else {
     sendMessage({
