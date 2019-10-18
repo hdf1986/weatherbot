@@ -11,13 +11,13 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-// app.post('/webhooks/telegram', async (req, res) => {
-//   console.log(req.body)
-//   console.log(User, User.createFromRequest)
-//   const user = await User.createFromRequest(req.body)
-//   console.log(user)
+app.post('/webhooks/telegram', async (req, res) => {
+  console.log(req.body)
+  console.log(User, User.createFromRequest)
+  const user = await User.createFromRequest(req.body)
+  console.log(user)
   
-//   res.send({ status: "ok" })
-// })
+  res.send({ status: "ok" })
+})
 
 app.listen(port, () => console.log(`Weatherbot app listening on port ${port}!`))
