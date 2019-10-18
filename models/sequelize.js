@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const sequelize = process.env.DATABASE_URL ?
   (new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
-    logging: true
+    logging: false
   })) : (
     new Sequelize('db', 'telegram', 'postgres', '', {
       dialect: 'postgres',
