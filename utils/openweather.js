@@ -9,7 +9,8 @@ module.exports = ({
     qs: {
       lat,
       lon,
-      appid: OPENWEATHER_API_TOKEN
+      appid: OPENWEATHER_API_TOKEN,
+      units: 'metric'
     }
   }).then(res => JSON.parse(res))
 }
