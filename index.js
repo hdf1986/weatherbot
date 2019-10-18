@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000
 const User = require('./models/user');
 const TELEGRAM_API_TOKEN = process.env.TELEGRAM_API_TOKEN || ''
 
-[User].map(model => model.sync({ force: true }));
+[User].map(model => model.sync({ force: false }));
 
 app.use(bodyParser.json())
 
