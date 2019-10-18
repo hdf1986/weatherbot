@@ -19,6 +19,14 @@ app.post('/webhooks/telegram', async (req, res) => {
     conversationId: user.conversationId,
     text: "Hola, soy un bot, teneme paciencia, todavia no naci"
   })
+  if(req.body.message.location) {
+    const location = req.body.message.location
+    const latLon = `${location.latitude},${location.longitude}`
+    sendMessage({
+      conversationId: user.conversationId,
+      text: `Grabe tu ubicacion, gracias! Es ${latLon}`
+    })
+  }
   res.send({ status: "ok" })
 })
 
