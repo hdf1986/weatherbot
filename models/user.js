@@ -13,7 +13,6 @@ User.init({
 User.createFromRequest = async (body) => {
   const telegramId = body.message.from.id.toString();
   const conversationId = body.message.chat.id;
-  User.sync({ force: true })
   return await User.findOrCreate({ 
     where: { telegramId }, 
     defaults: { telegramId, conversationId }
