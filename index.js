@@ -14,6 +14,7 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.post('/webhooks/telegram', async (req, res) => {
   console.log(req.body)
   const user = await User.createFromRequest(req.body)
+  console.log(user.conversationId)
   sendMessage({
     conversationId: user.conversationId,
     text: "Hola, soy un bot, teneme paciencia, todavia no naci"
