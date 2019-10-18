@@ -2,7 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const app = express()
 const port = process.env.PORT || 3000
+const User = require('./models/user');
 const TELEGRAM_API_TOKEN = process.env.TELEGRAM_API_TOKEN || ''
+
+[User].forEach(model => model.sync({ force: true }))
 
 app.use(bodyParser.json())
 
