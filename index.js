@@ -5,6 +5,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const User = require('./models/user');
 const sendMessage = require('./utils/telegram');
+const getWeather = require('./utils/openweather');
 const locationRequest = 'Me decis mi ubicacion?';
 const weatherRequest = 'Me decis el clima?';
 
@@ -33,6 +34,12 @@ app.post('/webhooks/telegram', async (req, res) => {
       text: `Tu ubicacion es ${user.latLon}`
     })
   } else if (levenshtein(weatherRequest, req.body.message.text) <= 5) {
+    const [lat, lon] = user.latLon.split(',')
+    getWeather({
+      lat, lon
+    }).then(weather => {
+      console.log(weather)
+    }) 
     sendMessage({
       conversationId: user.conversationId,
       text: `El clima es soleado!`
