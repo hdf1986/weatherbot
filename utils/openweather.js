@@ -4,7 +4,7 @@ const OPENWEATHER_API_URL = `https://api.openweathermap.org/data/2.5`
 module.exports = ({
   lat, lon
 }) => {
-  request({
+  return request({
     url: `${OPENWEATHER_API_URL}/forecast`,
     qs: {
       lat,
