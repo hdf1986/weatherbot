@@ -8,7 +8,8 @@ module.exports = ({
     url: `${OPENWEATHER_API_URL}/forecast`,
     qs: {
       lat,
-      lon
+      lon,
+      appid: OPENWEATHER_API_TOKEN
     }
   }).then(res => JSON.parse(res))
 }
