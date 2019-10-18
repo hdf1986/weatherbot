@@ -1,25 +1,22 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('./sequelize');
 
 class User extends Model {}
 User.init({
   telegramId: DataTypes.STRING,
-  conversationId: DataTypes.STRING,
   name: DataTypes.STRING,
+  lastQuestion: DataTypes.STRING,
   latLon: DataTypes.STRING,
-  currentQuestion: DataTypes.STRING
+  conversationId: DataTypes.STRING
 }, { sequelize, modelName: 'user' });
 
-User.fromTelegramRequest = async (body) => {
-  const telegramId = body.message.from.id.toString()
-  const conversationId = body.message.chat.id
-  return User.findOrCreate({
-    where: { telegramId },
-    defaults: { 
-      conversationId,
-      currentQuestion: null
-    }
+User.createFromRequest = async (body) => {
+  const telegramId = body.message.from.id.toString();
+  const conversationId = body.message.chat.id;
+  return await User.findOrCreate({ 
+    where: { telegramId }, 
+    defaults: { telegramId, conversationId }
   })
 }
 
-module.export = User;
+module.exports = User;
