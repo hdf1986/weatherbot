@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const app = express()
 const port = process.env.PORT || 3000
 const User = require('./models/user');
-const TELEGRAM_API_TOKEN = process.env.TELEGRAM_API_TOKEN || ''
 
 [User].map(model => model.sync({ force: false }));
 
@@ -13,10 +12,11 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/webhooks/telegram', async (req, res) => {
   console.log(req.body)
-  console.log(User, User.createFromRequest)
   const user = await User.createFromRequest(req.body)
-  console.log(user)
-  
+  sendMessage({
+    conversationId: user.conversationId,
+    text: "Hola, soy un bot, teneme paciencia, todavia no naci"
+  })
   res.send({ status: "ok" })
 })
 
