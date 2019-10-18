@@ -6,7 +6,7 @@ module.exports = ({
   conversationId
 }) => {
   request({
-    uri: `${TELEGRAM_API_URL}/sendMessage`,
+    url: `${TELEGRAM_API_URL}/sendMessage`,
     qs: {
       text,
       chat_id: conversationId
