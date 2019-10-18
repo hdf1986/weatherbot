@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express()
 const port = process.env.PORT || 3000
 const User = require('./models/user');
+const sendMessage = require('./utils/telegram');
 
 [User].map(model => model.sync({ force: false }));
 
