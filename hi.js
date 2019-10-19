@@ -5,9 +5,7 @@ const getWeather = require('./utils/openweather');
 const howItsToday = (weather) => {
   const todayDate = new Date()
   const today = `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`
-  const weatherOfToday = weather.list.map(w => w.dt_txt)
-                                     .filter((i) => i.startsWith(today))
-  console.log(weatherOfToday, today)
+  const weatherOfToday = weather.list.filter((i) => i,dt_txt.startsWith(today))
 }
 
 User.findAll().then(users => {
