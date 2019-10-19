@@ -43,7 +43,6 @@ app.post('/webhooks/telegram', async (req, res) => {
         text: weather.list.map(w => `- ${w.main.temp_min} - ${w.main.temp_max} | ${w.weather[0].main}`).join("\n")
       })
     }) 
-    
   } else {
     sendMessage({
       conversationId: user.conversationId,
