@@ -9,7 +9,7 @@ const howItsToday = (weather) => {
 
   if(weatherOfToday.includes(w => w[0].main === "rain" || w[0].main === "thunderstorm")) {
     return 'rain'
-  } else if(weatherOfToday.includes(w => w.main.temp_min < 30)) {
+  } else if(weatherOfToday.includes(w => w.main.temp_min < 100)) {
     return 'cold'
   } else {
     return 'hot'
