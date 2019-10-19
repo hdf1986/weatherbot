@@ -6,8 +6,8 @@ const howItsToday = (weather) => {
   const todayDate = new Date()
   const today = `${todayDate.getFullYear()}-${todayDate.getMonth()}-${todayDate.getDate()}`
   const weatherOfToday = weather.list.map(w => w.dt_txt)
-                                     .filter((i) => i.startsWith(today))
-  console.log(weatherOfToday)
+                                    //  .filter((i) => i.startsWith(today))
+  console.log(weatherOfToday, today)
 }
 
 User.findAll().then(users => {
