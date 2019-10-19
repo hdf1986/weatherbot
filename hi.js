@@ -13,6 +13,7 @@ const howItsToday = (weather) => {
 User.findAll().then(users => {
   users.forEach(user => {
     console.log(`Saying hi to ${user.id}`)
+    if(user.latLon === null) return console.log('No location')
 
     const [lat, lon] = user.latLon.split(',')
     getWeather({
