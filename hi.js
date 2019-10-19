@@ -14,7 +14,7 @@ const howItsToday = (weather) => {
   console.log(weatherOfToday)
   if(weatherOfToday.some(w => w.weather[0].main === "rain" || w.weather[0].main === "thunderstorm")) {
     return 'rain'
-  } else if(weatherOfToday.some(w => w.main.temp_min < 100)) {
+  } else if(weatherOfToday.some(w => w.main.temp_min < 20)) {
     return 'cold'
   } else {
     return 'hot'
