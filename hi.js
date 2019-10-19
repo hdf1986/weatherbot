@@ -24,7 +24,7 @@ User.findAll().then(users => {
     const [lat, lon] = user.latLon.split(',')
     getWeather({
       lat, lon
-    }).then(weather => howItsToday(weather))
+    }).then(weather => console.log(howItsToday(weather)))
     sendMessage({
       conversationId: user.conversationId,
       text: "Hola"
