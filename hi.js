@@ -6,7 +6,7 @@ const howItsToday = (weather) => {
   const todayDate = new Date()
   const today = `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`
   const weatherOfToday = weather.list.map(w => w.dt_txt)
-                                    //  .filter((i) => i.startsWith(today))
+                                     .filter((i) => i.startsWith(today))
   console.log(weatherOfToday, today)
 }
 
