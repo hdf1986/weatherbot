@@ -1,6 +1,11 @@
 const User = require('./models/user');
 const sendMessage = require('./utils/telegram');
 const getWeather = require('./utils/openweather');
+const messages = {
+  rain: 'Hey! Va a llover, lleva paraguas',
+  cold: 'Brrrr, va a hacer frio, te abrigaste?',
+  hot: 'LLEVATE UN AIRE ACONDICIONADO PEGADO AL CUELLO, HACE CALOR'
+}
 
 const howItsToday = (weather) => {
   const todayDate = new Date()
@@ -24,10 +29,11 @@ User.findAll().then(users => {
     const [lat, lon] = user.latLon.split(',')
     getWeather({
       lat, lon
-    }).then(weather => console.log(howItsToday(weather)))
-    sendMessage({
-      conversationId: user.conversationId,
-      text: "Hola"
+    }).then(weather => {
+      sendMessage({
+        conversationId: user.conversationId,
+        text: messages[howItsToday(weather)]
+      })
     })
   })
 })
