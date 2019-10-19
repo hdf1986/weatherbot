@@ -8,7 +8,7 @@ const sendMessage = require('./utils/telegram');
 const getWeather = require('./utils/openweather');
 const locationRequest = 'Me decis mi ubicacion?';
 const weatherRequest = 'Me decis el clima?';
-const weatherRequest = 'Borra mi usuario';
+const deleteRequest = 'Borra mi usuario';
 
 [User].map(model => model.sync({ force: false }));
 
