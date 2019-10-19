@@ -4,6 +4,7 @@ const getWeather = require('./utils/openweather');
 
 User.findAll().then(users => {
   users.forEach(user => {
+    console.log(`Saying hi to ${user.id}`)
     sendMessage({
       conversationId: user.conversationId,
       text: "Hola"
