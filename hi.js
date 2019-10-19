@@ -11,7 +11,7 @@ const howItsToday = (weather) => {
   const todayDate = new Date()
   const today = `${todayDate.getFullYear()}-${todayDate.getMonth() + 1}-${todayDate.getDate()}`
   const weatherOfToday = weather.list.filter((i) => i.dt_txt.startsWith(today))
-
+  console.log(weatherOfToday)
   if(weatherOfToday.includes(w => w[0].main === "rain" || w[0].main === "thunderstorm")) {
     return 'rain'
   } else if(weatherOfToday.includes(w => w.main.temp_min < 100)) {
