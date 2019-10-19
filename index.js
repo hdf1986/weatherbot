@@ -38,12 +38,12 @@ app.post('/webhooks/telegram', async (req, res) => {
     getWeather({
       lat, lon
     }).then(weather => {
-      console.log(weather)
+      sendMessage({
+        conversationId: user.conversationId,
+        text: weather.list.map(w => `- ${w.main.temp_min} - ${w.main.temp_max} | ${w.weather.main}`)
+      })
     }) 
-    sendMessage({
-      conversationId: user.conversationId,
-      text: `El clima es soleado!`
-    })
+    
   } else {
     sendMessage({
       conversationId: user.conversationId,
