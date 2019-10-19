@@ -8,6 +8,7 @@ const sendMessage = require('./utils/telegram');
 const getWeather = require('./utils/openweather');
 const locationRequest = 'Me decis mi ubicacion?';
 const weatherRequest = 'Me decis el clima?';
+const weatherRequest = 'Borra mi usuario';
 
 [User].map(model => model.sync({ force: false }));
 
@@ -41,6 +42,13 @@ app.post('/webhooks/telegram', async (req, res) => {
       sendMessage({
         conversationId: user.conversationId,
         text: weather.list.map(w => `- ${w.dt_txt}: ${w.main.temp_min} - ${w.main.temp_max} | ${w.weather[0].main}`).join("\n")
+      })
+    }) 
+  } else if (levenshtein(deleteRequest, req.body.message.text) <= 5) {
+    user.destroy().then(weather => {
+      sendMessage({
+        conversationId: user.conversationId,
+        text: `Elimine tu usuario, gracias por todo :)`
       })
     }) 
   } else {
